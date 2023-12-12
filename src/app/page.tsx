@@ -123,9 +123,9 @@ export default function Home() {
       <div className='  flex justify-center mt-8'>
         <div className=' w-11/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5'>
           {
-            cards.map((item) => {
+            cards.map((item,i) => {
               return (
-                <div className=' p-5 shadow-lg'>
+                <div className=' p-5 shadow-lg ' key={i}>
                   <Image src={item.image} alt={item.title} width={100} height={100} className=' w-screen h-fit' />
                   <h1 className=' font-bold mt-3'>{item.title}</h1>
                   <p className=' mt-3'>{item.des}</p>
