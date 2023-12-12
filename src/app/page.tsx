@@ -16,6 +16,30 @@ import linkedin from '../../public/linkedin.png'
 import { useState } from 'react'
 import { link } from 'fs'
 import Link from 'next/link'
+
+const cards = [
+  {
+    image: "/c1.jpg",
+    title: "Designed for life today – and tomorrow",
+    des: "The next-generation of games. Your goals. Friends and family. Windows 11 was made to bring you closer to everything you love.",
+
+  },
+  {
+    image: "/c2.jpg",
+    title: "Microsoft Edge",
+    des: "World-class performance with more privacy, more productivity and more value while you browse."
+  },
+  {
+    image: "/c3.jpg",
+    title: "Microsoft OneDrive",
+    des: "Save your files and photos to OneDrive and access them from any device, anywhere."
+  },
+  {
+    image: "/c4.jpg",
+    title: "OneNote",
+    des: "Organise your notes and your life."
+  }
+]
 export default function Home() {
 
   const openWebsite = (url: string) => {
@@ -44,11 +68,9 @@ export default function Home() {
             <button className=' cursor-pointer my-4 ml-5 md:hidden' onClick={() => setCollapse(false)}><Image src={close} alt='close' width={15} height={15} /></button>
             <div className=' hover:border border-black hover:py-2 hover:px-1 hover:w-[90%] md:hover:py-0 md:hover:w-auto md:hover:px-0 md:border-none md:hover:underline md:hover:underline-offset-8 cursor-pointer my-4 ml-5 '>Microsoft 365</div>
             <div className=' hover:border border-black hover:py-2 hover:px-1 hover:w-[90%] md:hover:py-0 md:hover:w-auto md:hover:px-0 md:border-none md:hover:underline md:hover:underline-offset-8 cursor-pointer my-4 ml-5'>Office</div>
-            <div className=' hover:border border-black hover:py-2 hover:px-1 hover:w-[90%] md:hover:py-0 md:hover:w-auto md:hover:px-0 md:border-nonemd:hover:underline md:hover:underline-offset-8 cursor-pointer my-4 ml-5' >Copilot</div>
-            <div className=' hover:border border-black hover:py-2 hover:px-1 hover:w-[90%] md:hover:py-0 md:hover:w-auto md:hover:px-0 md:border-nonemd:hover:underline md:hover:underline-offset-8 cursor-pointer my-4 ml-5'>Windows</div>
-            <div className=' hover:border border-black hover:py-2 hover:px-1 hover:w-[90%] md:hover:py-0 md:hover:w-auto md:hover:px-0 md:border-nonemd:hover:underline md:hover:underline-offset-8 cursor-pointer my-4 ml-5'>Support</div>
-
-
+            <div className=' hover:border border-black hover:py-2 hover:px-1 hover:w-[90%] md:hover:py-0 md:hover:w-auto md:hover:px-0 md:border-none md:hover:underline md:hover:underline-offset-8 cursor-pointer my-4 ml-5' >Copilot</div>
+            <div className=' hover:border border-black hover:py-2 hover:px-1 hover:w-[90%] md:hover:py-0 md:hover:w-auto md:hover:px-0 md:border-none md:hover:underline md:hover:underline-offset-8 cursor-pointer my-4 ml-5'>Windows</div>
+            <div className=' hover:border border-black hover:py-2 hover:px-1 hover:w-[90%] md:hover:py-0 md:hover:w-auto md:hover:px-0 md:border-none md:hover:underline md:hover:underline-offset-8 cursor-pointer my-4 ml-5'>Support</div>
           </div>
 
         </div>
@@ -97,32 +119,51 @@ export default function Home() {
 
       </div>
 
-      <div className=' bg-[#f2f2f2] md:mt-5 md:flex flex-row md:py-10 lg:mt-14 lg:py-14'>
 
-        <div className=' text-center md:w-8/12 md:text-left lg:w-1/2  '>
-
-
-          <div className=' pt-5 px-5 md:ml-10'>
-            <h1 className=' pb-2 font-bold'>OUR BEST RECIPES</h1>
-            Upholding the true French pastry- making tradition, Collection is a range of refined cakes using only the highest quality, freshest ingredients from select regions of France.
-          </div>
+      <div className='  flex justify-center mt-8'>
+        <div className=' w-11/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5'>
+          {
+            cards.map((item) => {
+              return (
+                <div className=' p-5 shadow-lg'>
+                  <Image src={item.image} alt={item.title} width={100} height={100} className=' w-screen h-fit' />
+                  <h1 className=' font-bold mt-3'>{item.title}</h1>
+                  <p className=' mt-3'>{item.des}</p>
+                </div>
+              )
+            })
+          }
         </div>
-
-        <div className=' flex justify-center gap-x-5 mt-5 pb-5 md:flex items-center md:ml-10 lg:ml-48'>
-          <div>
-            <div><Image src={facebook} alt='facebook' width={40} height={40} className=' cursor-pointer' onClick={() => openWebsite('https://www.facebook.com/')} /></div>
-          </div>
-
-          <div>
-            <div><Image src={linkedin} alt='' width={40} height={40} className=' cursor-pointer' onClick={() => openWebsite('https://www.linkedin.com/')} /></div>
-          </div>
-
-          <div>
-            <div><Image src={youtube} alt='' width={40} height={40} className=' cursor-pointer' onClick={() => openWebsite('https://www.youtube.com/')} /></div>
-          </div>
-        </div>
-
       </div>
+
+      <footer className=' mt-8'>
+        <div className=' bg-[#f2f2f2] md:mt-5 md:flex flex-row md:py-10 lg:mt-14 lg:py-14'>
+
+          <div className=' text-center md:w-8/12 md:text-left lg:w-1/2  '>
+
+
+            <div className=' pt-5 px-5 md:ml-10'>
+              <h1 className=' pb-2 font-bold'>OUR BEST RECIPES</h1>
+              Upholding the true French pastry- making tradition, Collection is a range of refined cakes using only the highest quality, freshest ingredients from select regions of France.
+            </div>
+          </div>
+
+          <div className=' flex justify-center gap-x-5 mt-5 pb-5 md:flex items-center md:ml-10 lg:ml-48'>
+            <div>
+              <div><Image src={facebook} alt='facebook' width={40} height={40} className=' cursor-pointer' onClick={() => openWebsite('https://www.facebook.com/')} /></div>
+            </div>
+
+            <div>
+              <div><Image src={linkedin} alt='' width={40} height={40} className=' cursor-pointer' onClick={() => openWebsite('https://www.linkedin.com/')} /></div>
+            </div>
+
+            <div>
+              <div><Image src={youtube} alt='' width={40} height={40} className=' cursor-pointer' onClick={() => openWebsite('https://www.youtube.com/')} /></div>
+            </div>
+          </div>
+
+        </div>
+      </footer>
 
     </div>
   )
